@@ -4,6 +4,7 @@ local players = game:GetService("Players")
 --// Libs
 local viewModelController = require(script.Parent.controllers.viewModelController)
 local shootController = require(script.Parent.controllers.shootController)
+local vfxController = require(script.Parent.controllers.vfxController)
 
 --// Lib Variables
 local player = players.LocalPlayer

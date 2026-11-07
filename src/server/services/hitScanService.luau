@@ -4,7 +4,7 @@
 --// Services
 local replicatedStorage = game:GetService("ReplicatedStorage")
 
---// Modules
+--// Libs
 local weaponConfig = require(replicatedStorage.Shared.config.weaponConfig)
 
 --// Types
@@ -15,8 +15,14 @@ type weaponData = {
 }
 
 --// Variables
+local hitEffectEvent = replicatedStorage:WaitForChild("remotes"):WaitForChild("hitEffect")
+
 local maxOriginOffset = 10
+
 local lastShotTimes = {}
+
+--// Lib Decleration
+local hitScanService = {}
 
 --// Lib Private Functions
 function isValidShot(player: Player, config: weaponData, origin: any, direction: any): boolean
@@ -68,10 +74,8 @@ function applyDamage(raycastResult: RaycastResult, damage: number)
 	end
 
 	hitHumanoid:TakeDamage(damage)
+	hitEffectEvent:FireAllClients(hitModel)
 end
-
---// Lib Decleration
-local hitScanService = {}
 
 --// Lib Public Functions
 function hitScanService.shoot(player: Player, weaponName: any, origin: any, direction: any)
