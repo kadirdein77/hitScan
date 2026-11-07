@@ -1,15 +1,15 @@
 --!optimize 2
 --!native
 
---// Lib Services
+--// Services
 local replicatedStorage = game:GetService("ReplicatedStorage")
 local serverScriptService = game:GetService("ServerScriptService")
 local players = game:GetService("Players")
 
---// Lib Modules
+--// Libs
 local hitScanService = require(serverScriptService.Server.services.hitScanService)
 
---// Lib Variables
+--// Variables
 local shootEvent = replicatedStorage:WaitForChild("remotes"):WaitForChild("shoot")
 
 shootEvent.OnServerEvent:Connect(hitScanService.shoot)
