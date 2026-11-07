@@ -1,4 +1,4 @@
---// Lib Services
+--// Services
 local players = game:GetService("Players")
 
 --// Libs
@@ -6,7 +6,7 @@ local viewModelController = require(script.Parent.controllers.viewModelControlle
 local shootController = require(script.Parent.controllers.shootController)
 local vfxController = require(script.Parent.controllers.vfxController)
 
---// Lib Variables
+--// Variables
 local player = players.LocalPlayer
 
 player.CameraMode = Enum.CameraMode.LockFirstPerson
