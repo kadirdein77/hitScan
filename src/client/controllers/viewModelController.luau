@@ -18,7 +18,7 @@ local viewModel
 local posValue
 local rotValue
 
-local bobCF = CFrame.new()
+local swayCF = CFrame.new()
 
 local posDamping = 1
 local posFrequency = 6
@@ -52,15 +52,15 @@ end
 
 function viewModelController.update()
 	local mouseDelta = userInputService:GetMouseDelta() / 50
-	local bobX = math.clamp(mouseDelta.X, -0.2, 0.2)
-	local bobY = math.clamp(mouseDelta.Y, -0.2, 0.2)
+	local swayX = math.clamp(mouseDelta.X, -0.2, 0.2)
+	local swayY = math.clamp(mouseDelta.Y, -0.2, 0.2)
 
-	bobCF = bobCF:Lerp(CFrame.new(bobX, bobY, 0), 0.3)
+	swayCF = swayCF:Lerp(CFrame.new(swayX, swayY, 0), 0.3)
 
 	local rotation = rotValue.Value
 	local recoilCF = CFrame.new(posValue.Value) * CFrame.Angles(rotation.X, rotation.Y, rotation.Z)
 
-	viewModel:PivotTo(camera.CFrame * bobCF * recoilCF)
+	viewModel:PivotTo(camera.CFrame * swayCF * recoilCF)
 end
 
 function viewModelController.stopSprings()
@@ -85,7 +85,7 @@ end
 function viewModelController.start()
 	_maid:DoCleaning()
 
-	bobCF = CFrame.new()
+	swayCF = CFrame.new()
 
 	posValue = _maid:Add(Instance.new("Vector3Value"))
 	rotValue = _maid:Add(Instance.new("Vector3Value"))

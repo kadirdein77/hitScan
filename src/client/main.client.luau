@@ -1,4 +1,5 @@
 --// Services
+local userInputService = game:GetService("UserInputService")
 local players = game:GetService("Players")
 
 --// Libs
@@ -11,6 +12,7 @@ local movementController = require(script.Parent.controllers.movementController)
 local player = players.LocalPlayer
 
 player.CameraMode = Enum.CameraMode.LockFirstPerson
+userInputService.MouseIconEnabled = false
 
 --// Lib Private Functions
 function setupCharacter()
