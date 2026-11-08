@@ -6,4 +6,4 @@ local weaponConfig = {
 	},
 }
 
-return weaponConfig
+return table.freeze(weaponConfig)

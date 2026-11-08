@@ -31,7 +31,7 @@ function play(character: Model)
 	highlight.Parent = character
 
 	spr.target(highlight, flashDamping, flashFrequency, flashGoal)
-	task.delay(flashLifetime, highlight.Destroy, highlight)
+	task.delay(flashDuration, highlight.Destroy, highlight)
 end
 
 --// Lib Decleration
