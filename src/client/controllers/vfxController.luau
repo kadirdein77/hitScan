@@ -3,29 +3,35 @@
 
 --// Services
 local replicatedStorage = game:GetService("ReplicatedStorage")
-local tweenService = game:GetService("TweenService")
-local debris = game:GetService("Debris")
+
+--// Libs
+local spr = require(replicatedStorage.Shared.libs.spr)
 
 --// Variables
 local hitFlashTemplate = replicatedStorage:WaitForChild("assets"):WaitForChild("hitFlash")
 local hitEffectEvent = replicatedStorage:WaitForChild("remotes"):WaitForChild("hitEffect")
 
+local startTransparency = 0.2
+local flashDamping = 1
+local flashFrequency = 5
 local flashDuration = 0.5
-local flashTweenInfo = TweenInfo.new(flashDuration, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
 local flashGoal = { FillTransparency = 1, OutlineTransparency = 1 }
 
---// Lib Public Functions
+--// Lib Private Functions
 function play(character: Model)
 	if not character or not character.Parent then
 		return
 	end
 
 	local highlight = hitFlashTemplate:Clone()
+	highlight.FillTransparency = startTransparency
+	highlight.OutlineTransparency = startTransparency
 	highlight.Adornee = character
 	highlight.Parent = character
 
-	tweenService:Create(highlight, flashTweenInfo, flashGoal):Play()
-	debris:AddItem(highlight, flashDuration)
+	spr.target(highlight, flashDamping, flashFrequency, flashGoal)
+	task.delay(flashLifetime, highlight.Destroy, highlight)
 end
 
 --// Lib Decleration
