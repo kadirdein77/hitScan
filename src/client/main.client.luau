@@ -5,6 +5,7 @@ local players = game:GetService("Players")
 local viewModelController = require(script.Parent.controllers.viewModelController)
 local shootController = require(script.Parent.controllers.shootController)
 local vfxController = require(script.Parent.controllers.vfxController)
+local movementController = require(script.Parent.controllers.movementController)
 
 --// Variables
 local player = players.LocalPlayer
@@ -15,11 +16,13 @@ player.CameraMode = Enum.CameraMode.LockFirstPerson
 function setupCharacter()
 	viewModelController.start()
 	shootController.start()
+	movementController.start()
 end
 
 function cleanCharacter()
 	viewModelController.stop()
 	shootController.stop()
+	movementController.stop()
 end
 
 --// Connections
