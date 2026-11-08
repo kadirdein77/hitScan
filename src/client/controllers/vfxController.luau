@@ -5,7 +5,7 @@
 local replicatedStorage = game:GetService("ReplicatedStorage")
 
 --// Libs
-local spr = require(replicatedStorage.Shared.libs.spr)
+local spr = require(replicatedStorage.Shared.modules.spr)
 
 --// Variables
 local hitFlashTemplate = replicatedStorage:WaitForChild("assets"):WaitForChild("hitFlash")
@@ -14,7 +14,7 @@ local hitEffectEvent = replicatedStorage:WaitForChild("remotes"):WaitForChild("h
 local startTransparency = 0.2
 local flashDamping = 1
 local flashFrequency = 5
-local flashDuration = 0.5
+local flashDuration = 1
 
 local flashGoal = { FillTransparency = 1, OutlineTransparency = 1 }
 
